@@ -8,9 +8,11 @@ web3.setProvider(new web3.providers.HttpProvider('http://127.0.0.1:8545'));
 
 
 app.get('/', (req, res) => {
-	web3.eth.net.isListening().then(() => res.send('is connected'))
-   	.catch(e => res.send('Wow. Something went wrong'));
-	//res.send('Hello World!')
+	web3.eth.net.isListening().then(() => {
+		res.send('is connected')
+	}).catch(e => {
+		res.send('Wow. Something went wrong')
+	});
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
